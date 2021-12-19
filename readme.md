@@ -3,12 +3,12 @@ Python script to find out if a word is offensive using [Dictionary API](https://
 
 ### Installation
 
-This project requires Python 3.8 to be installed.
+This project requires Python 3.8 to be installed. [Install Python](https://docs.python-guide.org/starting/installation/).
 
 Install using pip:
 
 ```
-pip install https://github.com/v1k45/is_offensive/archive/refs/heads/master.zip
+pip3 install https://github.com/v1k45/is_offensive/archive/refs/heads/master.zip
 ```
 
 ### Usage
@@ -30,6 +30,7 @@ Bulk search using a wordlist file:
 ```
 is_offensive filename.txt
 ```
+*Only 50 words are searched from the file to avoid exhausting API rate limit.*
 
 ### Contributing
 
