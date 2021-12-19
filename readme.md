@@ -3,6 +3,8 @@ Python script to find out if a word is offensive
 
 ### Installation
 
+This project requires Python 3.8 to be installed.
+
 Install using pip:
 
 ```

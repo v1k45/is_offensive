@@ -56,8 +56,12 @@ class DictionaryClient(httpx.AsyncClient):
         """
         Search multiple words together.
         """
-        words = [word.strip() for word in islice(wordlist, limit) if word.strip()]
-        return asyncio.gather(*[self.search(word) for word in words])
+        search_requests = [
+            self.search(word.strip())
+            for word in islice(wordlist, limit)
+            if word.strip()
+        ]
+        return asyncio.gather(*search_requests)
 
 
 async def file_search(wordlist: typing.Iterable):
