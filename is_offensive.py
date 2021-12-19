@@ -19,13 +19,12 @@ class SearchResult:
 
 class DictionaryClient(httpx.AsyncClient):
     BASE_URL = "https://dictionaryapi.com/api/v3/references/collegiate/json/"
-    API_KEY = ""
+    API_KEY = os.environ.get("DICTIONARY_API_KEY", "")
     ERROR_WORD_NOT_FOUND = "Could find a word matching query."
     ERROR_REQUEST_FAILED = "Failed to perform the request."
 
     def __init__(self, *args, **kwargs):
         super().__init__(base_url=self.BASE_URL, *args, **kwargs)
-        self.API_KEY = os.environ.get("DICTIONARY_API_KEY", "")
 
     async def search(self, word: str) -> SearchResult:
         """
@@ -118,7 +117,7 @@ async def interactive_search():
                 break
 
 
-async def main():
+def main():
     parser = argparse.ArgumentParser(description="Find out if a word is offensive.")
     parser.add_argument(
         "file",
@@ -135,10 +134,12 @@ async def main():
         return
 
     if args.file:
-        await file_search(args.file)
+        handler = file_search(args.file)
     else:
-        await interactive_search()
+        handler = interactive_search()
+
+    asyncio.run(handler)
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
