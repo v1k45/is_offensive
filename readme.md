@@ -1,5 +1,5 @@
 ## is_offensive
-Python script to find out if a word is offensive
+Python script to find out if a word is offensive using [Dictionary API](https://dictionaryapi.com/).
 
 ### Installation
 
@@ -8,21 +8,27 @@ This project requires Python 3.8 to be installed.
 Install using pip:
 
 ```
-$ pip install repo_zip_url
+pip install https://github.com/v1k45/is_offensive/archive/refs/heads/master.zip
 ```
 
 ### Usage
 
+Setup DictionaryAPI Key:
+
+```
+export DICTIONARY_API_KEY=your-api-key
+```
+
 Interactive search mode:
 
 ```
-$ is_offensive
+is_offensive
 ```
 
 Bulk search using a wordlist file:
 
 ```
-$ is_offensive filename.txt
+is_offensive filename.txt
 ```
 
 ### Contributing
@@ -31,13 +37,13 @@ This section covers details to setup development environment and start contribut
 
 Clone repository:
 ```
-$ git clone repo_url
+git clone git@github.com:v1k45/is_offensive.git
 ```
 
 Create virtual environment:
 ```
-$ python3 -m venv venv
-$ . ./venv/bin/activate
+python3 -m venv venv
+. ./venv/bin/activate
 ```
 
 Setup package for development:
