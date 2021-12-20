@@ -20,7 +20,7 @@ class SearchResult:
 class DictionaryClient(httpx.AsyncClient):
     BASE_URL = "https://dictionaryapi.com/api/v3/references/collegiate/json/"
     API_KEY = os.environ.get("DICTIONARY_API_KEY", "")
-    ERROR_WORD_NOT_FOUND = "Could find a word matching query."
+    ERROR_WORD_NOT_FOUND = "Could not find a word matching query."
     ERROR_REQUEST_FAILED = "Failed to perform the request."
 
     def __init__(self, *args, **kwargs):
@@ -55,6 +55,8 @@ class DictionaryClient(httpx.AsyncClient):
     def bulk_search(self, wordlist: typing.Iterable, limit: int = 50):
         """
         Search multiple words together.
+        Limits searches to 50 words at a time so that we don't exhaust the
+        1000 request/day API rate limit too quickly.
         """
         search_requests = [
             self.search(word.strip())

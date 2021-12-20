@@ -13,7 +13,7 @@ pip3 install https://github.com/v1k45/is_offensive/archive/refs/heads/master.zip
 
 ### Usage
 
-Setup DictionaryAPI Key:
+Setup Dictionary API Key:
 
 ```
 export DICTIONARY_API_KEY=your-api-key
